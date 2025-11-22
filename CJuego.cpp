@@ -16,7 +16,7 @@ CJuego::CJuego(int _n_jugadores)
 {
     // Llena el vector con jugadores por defecto
     for (int i = 0; i < n_jugadores; i++) {
-        std::string stdPlayerName = "Player " + std::to_string(i + 1);
+        std::string stdPlayerName = "Jugador " + std::to_string(i + 1);
         std::string stdAbrevName = "J" + std::to_string(i + 1);
         jugadores.push_back(CJugador(stdPlayerName, stdAbrevName));
     }
@@ -74,8 +74,8 @@ void CJuego::jugar() {
         tablero.dibujar_Tablero();
 
         CJugador &jugadorActual = jugadores[turno_actual];
-        std::cout << "\nTurno de: " << jugadorActual.get_nombre()
-                  << " (" << jugadorActual.get_sigla() << ")" << std::endl;
+        std::cout << "\nTurno de: " << jugadorActual.getNombre()
+                  << " (" << jugadorActual.getSigla() << ")" << std::endl;
 
         // --- INICIO DEL BUCLE DE VALIDACIÓN ---
 
@@ -88,7 +88,7 @@ void CJuego::jugar() {
             std::cin >> r2 >> c2;
 
             std::vector<int> coordenadas = {r1, c1, r2, c2};
-            std::string letra = jugadorActual.get_sigla();
+            std::string letra = jugadorActual.getSigla();
 
             // Llama al tablero.
             // Según el cambio, ahora nos devuelve true (éxito) o false (fallo).
@@ -126,7 +126,7 @@ bool CJuego::juego_terminado() const {
     // B. Sumar puntajes de los jugadores
     int suma_puntajes = 0;
     for (int i = 0; i < n_jugadores; i++) {
-        suma_puntajes += jugadores[i].get_puntaje();
+        suma_puntajes += jugadores[i].getPuntaje();
     }
 
     // C. Comparar
