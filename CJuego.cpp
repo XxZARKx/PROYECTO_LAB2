@@ -1,5 +1,5 @@
 /**
-* @file CJuego.cpp
+ * @file CJuego.cpp
  * @brief Implementación de los métodos de la clase controladora del juego.
  * @author RCastillo / Grupo 6 / Sección 1.07
  */
