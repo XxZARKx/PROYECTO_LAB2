@@ -3,4 +3,6 @@ project(proyecto)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(proyecto main.cpp)
+add_executable(proyecto main.cpp
+        CJuego.cpp
+        CJuego.h)
