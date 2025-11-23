@@ -14,8 +14,8 @@ class CMovimientos {
 private:
     vector<int> coordenadas;
 public:
-    CMovimientos(){}
-    CMovimientos(const vector<int>& pos_final):coordenadas(pos_final){}
+    CMovimientos()= default;
+    explicit CMovimientos(const vector<int>& pos_final):coordenadas(pos_final){}
     vector<int>& getCoordenadas(){return coordenadas;}
 
     bool validarMovimiento(int tablero_size, const vector<int>& pos_inicial);
