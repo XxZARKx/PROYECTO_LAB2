@@ -35,7 +35,7 @@ public:
 
     void cambiarTurno(int n );
 
-    int getTurno();
+    [[nodiscard]] int getTurno() const;
 
 };
 
