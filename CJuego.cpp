@@ -18,7 +18,7 @@ CJuego::CJuego(int _n_jugadores)
     for (int i = 0; i < n_jugadores; i++) {
         std::string stdPlayerName = "Jugador " + std::to_string(i + 1);
         std::string stdAbrevName = "J" + std::to_string(i + 1);
-        jugadores.push_back(CJugador(stdPlayerName, stdAbrevName));
+        jugadores.emplace_back(stdPlayerName, stdAbrevName);
     }
 }
 
