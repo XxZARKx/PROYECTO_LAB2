@@ -21,7 +21,7 @@ bool CMovimientos::validarMovimiento(int tablero_size, const vector<int>& pos_in
 
 }
 
-bool CMovimientos::validarDistancia_manhattan(const vector<int>& pos_inicial) {
+bool CMovimientos::validarDistancia_manhattan(const vector<int>& pos_inicial) const{
     int dist = abs(coordenadas[0] - pos_inicial[0]) +  abs(coordenadas[1] - pos_inicial[1]);
     return dist <= 1;
 }
