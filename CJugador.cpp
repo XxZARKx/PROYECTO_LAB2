@@ -32,6 +32,6 @@ void CJugador::cambiarTurno(int n ) {
     turno = n;
 };
 
-int CJugador::getTurno() {
+int CJugador::getTurno() const {
     return turno;
 };
