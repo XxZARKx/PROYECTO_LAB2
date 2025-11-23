@@ -31,7 +31,7 @@ public:
 
     void sumarPuntaje(int punto);
 
-    int getPuntaje() const;
+    [[nodiscard]] int getPuntaje() const;
 
     void cambiarTurno(int n );
 
