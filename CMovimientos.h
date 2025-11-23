@@ -19,7 +19,7 @@ public:
     vector<int>& getCoordenadas(){return coordenadas;}
 
     bool validarMovimiento(int tablero_size, const vector<int>& pos_inicial);
-    bool validarDistancia_manhattan(const vector<int>& pos_inicial);
+    [[nodiscard]] bool validarDistancia_manhattan(const vector<int>& pos_inicial) const;
 
 
 };
