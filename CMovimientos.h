@@ -4,7 +4,8 @@
 
 #ifndef DOTS_AND_BOXES_CMOVIMIENTOS_H
 #define DOTS_AND_BOXES_CMOVIMIENTOS_H
-#include <iostream>
+// ReSharper disable once CppUnusedIncludeDirective
+#include <cstdlib>
 #include <vector>
 using namespace std;
 
