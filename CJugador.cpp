@@ -4,7 +4,7 @@
 
 #include "CJugador.h"
 
-void CJugador::setNombre(string _nombre) {
+void CJugador::setNombre(const string& _nombre) {
     nombre = _nombre;
 };
 
