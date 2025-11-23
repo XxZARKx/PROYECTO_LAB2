@@ -17,9 +17,9 @@ private:
     int turno = 0;
     int puntaje = 0;
 public:
-    CJugador(){};
-    CJugador(string _nombre, string _sigla): nombre(_nombre), sigla(_sigla){};
-    virtual ~CJugador(){};
+    CJugador()= default;
+    explicit CJugador(string  _nombre, string  _sigla): nombre(std::move(_nombre)), sigla(std::move(_sigla)){};
+    virtual ~CJugador()= default;
 
     void setNombre(string _nombre);
 
