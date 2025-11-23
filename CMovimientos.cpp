@@ -5,7 +5,7 @@
 #include "CMovimientos.h"
 
 
-bool CMovimientos::validarMovimiento(int tablero_size, const vector<int>& pos_inicial) {
+bool CMovimientos::validarMovimiento(int tablero_size, const vector<int>& pos_inicial) const{
     if (coordenadas.size() != 2)
         return false;
     int fila = coordenadas[0];
