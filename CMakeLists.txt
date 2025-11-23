@@ -7,4 +7,5 @@ add_executable(proyecto main.cpp
         CJuego.cpp
         CJuego.h
         CJugador.cpp
-        CJugador.h)
+        CJugador.h
+        CMovimientos.cpp)
