@@ -75,7 +75,7 @@ public:
      * @brief Verifica si ya no quedan movimientos posibles.
      * @return true si el juego ha terminado, false en caso contrario.
      */
-    bool juego_terminado() const;
+    [[nodiscard]] bool juego_terminado() const;
 
     /**
      * @brief Pasa el turno al siguiente jugador.
