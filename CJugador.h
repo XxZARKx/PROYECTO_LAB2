@@ -23,7 +23,7 @@ public:
 
     void setNombre(const string& _nombre);
 
-    void setSigla(string _sigla);
+    void setSigla(const string& _sigla);
 
     string getNombre();
 
