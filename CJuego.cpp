@@ -5,6 +5,7 @@
  */
 
 #include "CJuego.h"
+#include <limits>
 
 // --- CONSTRUCTOR ---
 CJuego::CJuego(int _n_jugadores)
@@ -14,12 +15,40 @@ CJuego::CJuego(int _n_jugadores)
       jugadores(),
       tablero(0) // Inicializa con tamaño 0 temporalmente
 {
-    // Llena el vector con jugadores por defecto
+    std::cout << "\n--- Configuracion de Jugadores ---" << std::endl;
+
     for (int i = 0; i < n_jugadores; i++) {
-        std::string stdPlayerName = "Jugador " + std::to_string(i + 1);
-        std::string stdAbrevName = "J" + std::to_string(i + 1);
-        jugadores.emplace_back(stdPlayerName, stdAbrevName);
+        std::string nombreInput;
+        std::string siglaInput;
+        bool entradaValida = false;
+
+        // 1. Pedir Nombre
+        std::cout << "Ingrese el nombre del Jugador " << (i + 1) << ": ";
+        std::cin >> nombreInput;
+
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        do {
+            std::cout << "Ingrese su sigla (1 letra) para " << nombreInput << ": ";
+            std::cin >> siglaInput;
+
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            // VALIDACIÓN LÓGICA
+            if (siglaInput.length() == 1) {
+                entradaValida = true;
+            } else {
+                std::cout << ">> ERROR: La sigla debe ser de un solo caracter. Intente de nuevo.\n";
+                entradaValida = false;
+            }
+        } while (!entradaValida);
+
+        // 3. Crear el jugador directamente en el vector
+        jugadores.emplace_back(nombreInput, siglaInput);
+
+        std::cout << "----------------------------------" << std::endl;
     }
+    std::cout << "Jugadores registrados exitosamente.\n" << std::endl;
 }
 
 // --- DESTRUCTOR ---
