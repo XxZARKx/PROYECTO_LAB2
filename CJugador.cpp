@@ -8,7 +8,7 @@ void CJugador::setNombre(const string& _nombre) {
     nombre = _nombre;
 };
 
-void CJugador::setSigla(string _sigla) {
+void CJugador::setSigla(const string& _sigla) {
     sigla = _sigla;
 };
 
