@@ -21,7 +21,7 @@ public:
     explicit CJugador(string  _nombre, string  _sigla): nombre(std::move(_nombre)), sigla(std::move(_sigla)){};
     virtual ~CJugador()= default;
 
-    void setNombre(string _nombre);
+    void setNombre(const string& _nombre);
 
     void setSigla(string _sigla);
 
