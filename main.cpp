@@ -9,9 +9,9 @@
  * - Integrante 1: Rafael Adrián Castillo Castro (Código: 202510044)
  * - Integrante 2: Maydelith Laura Zuñiga Cabrera (Código: 202510437)
  * - Integrante 3: Rodrigo Franco Huertos Ochoa (Código: 202510118)
- * - Integrante 4: Carlos Fabrizio Condor Hurtado (Código: SU_CODIGO_AQUI)
+ * - Integrante 4: Carlos Fabrizio Condor Hurtado (Código: 202510436)
  * - Integrante 5: Valeria  Baquerizo Rojas (Código: 202510657)
- * - Integrante 6: Hector Contreras Sosa (Código: SU_CODIGO_AQUI)
+ * - Integrante 6: Hector Contreras Sosa (Código: 202520086)
  */
 
 #include "CJuego.h"
