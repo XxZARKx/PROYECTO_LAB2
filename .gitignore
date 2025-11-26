@@ -1,0 +1,17 @@
+# Archivos de compilación de CMake (Lo más importante)
+cmake-build-debug/
+cmake-build-release/
+CMakeFiles/
+
+# Configuración del IDE (CLion)
+.idea/
+
+# Ejecutables y binarios
+*.exe
+*.dll
+*.o
+*.obj
+
+# Archivos del sistema operativo (Mac/Windows)
+.DS_Store
+Thumbs.db
