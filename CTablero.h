@@ -8,23 +8,23 @@
 #include <vector>
 #include <string>
 #include "CCubo.h"
-#include "CMovimientos.cpp"
+#include "CMovimientos.h"
 using namespace std;
 
 
 class CTablero {
 private:
-    int tamano;
+    int tamano{};
     vector<vector<string>> tablero;
 public:
-    CTablero();
-    CTablero(int _tamano):tamano(2*_tamano) {
+    CTablero() = default;
+    explicit CTablero(int _tamano):tamano(2*_tamano) {
         tablero.resize(tamano);
         for (int i = 0; i < tamano; i++) {
             tablero[i].resize(tamano," ");
         }
     };
-    virtual ~CTablero();
+    virtual ~CTablero()=default;
     vector<vector<string>> relleno_tablero();
     void dibujar_tablero();
     bool aplicar_movimiento( const vector<int> &print,string letra);
