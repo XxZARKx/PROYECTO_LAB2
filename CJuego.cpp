@@ -6,6 +6,8 @@
 
 #include "CJuego.h"
 #include <limits>
+#include <sstream>
+#include <algorithm>
 
 // --- CONSTRUCTOR ---
 CJuego::CJuego(int _n_jugadores)
@@ -15,30 +17,30 @@ CJuego::CJuego(int _n_jugadores)
       jugadores(),
       tablero(0) // Inicializa con tamaño 0 temporalmente
 {
-    std::cout << "\n--- Configuracion de Jugadores ---" << std::endl;
+    cout << "\n--- Configuracion de Jugadores ---" << endl;
 
     for (int i = 0; i < n_jugadores; i++) {
-        std::string nombreInput;
-        std::string siglaInput;
+        string nombreInput;
+        string siglaInput;
         bool entradaValida = false;
 
         // 1. Pedir Nombre
-        std::cout << "Ingrese el nombre del Jugador " << (i + 1) << ": ";
-        std::cin >> nombreInput;
+        cout << "Ingrese el nombre del Jugador " << (i + 1) << ": ";
+        cin >> nombreInput;
 
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         do {
-            std::cout << "Ingrese su sigla (1 letra) para " << nombreInput << ": ";
-            std::cin >> siglaInput;
+            cout << "Ingrese su sigla (1 letra) para " << nombreInput << ": ";
+            cin >> siglaInput;
 
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
             // VALIDACIÓN LÓGICA
             if (siglaInput.length() == 1) {
                 entradaValida = true;
             } else {
-                std::cout << ">> ERROR: La sigla debe ser de un solo caracter. Intente de nuevo.\n";
+                cout << ">> ERROR: La sigla debe ser de un solo caracter. Intente de nuevo.\n";
                 entradaValida = false;
             }
         } while (!entradaValida);
@@ -46,9 +48,9 @@ CJuego::CJuego(int _n_jugadores)
         // 3. Crear el jugador directamente en el vector
         jugadores.emplace_back(nombreInput, siglaInput);
 
-        std::cout << "----------------------------------" << std::endl;
+        cout << "----------------------------------" << endl;
     }
-    std::cout << "Jugadores registrados exitosamente.\n" << std::endl;
+    cout << "Jugadores registrados exitosamente.\n" << endl;
 }
 
 // --- DESTRUCTOR ---
@@ -58,12 +60,12 @@ CJuego::~CJuego() = default;
 void CJuego::mostrar_menu() {
     int opcion = 0;
     do {
-        std::cout << "\n--- Dots & Boxes ---\n";
-        std::cout << "1. Tablero 6x6\n";
-        std::cout << "2. Tablero 10x10\n";
-        std::cout << "0. Salir\n";
-        std::cout << "Seleccione la opcion: ";
-        std::cin >> opcion;
+        cout << "\n--- Dots & Boxes ---\n";
+        cout << "1. Tablero 6x6\n";
+        cout << "2. Tablero 10x10\n";
+        cout << "0. Salir\n";
+        cout << "Seleccione la opcion: ";
+        cin >> opcion;
 
         switch (opcion) {
             case 1:
@@ -73,10 +75,10 @@ void CJuego::mostrar_menu() {
                 iniciar_partida(10);
                 break;
             case 0:
-                std::cout << "Saliendo del juego...\n";
+                cout << "Saliendo del juego...\n";
                 break;
             default:
-                std::cout << "Opcion invalida. Intente de nuevo.\n";
+                cout << "Opcion invalida. Intente de nuevo.\n";
         }
     } while (opcion != 0 && opcion != 1 && opcion != 2);
 }
@@ -103,28 +105,47 @@ void CJuego::jugar() {
         tablero.dibujar_tablero();
 
         CJugador &jugadorActual = jugadores[turno_actual];
-        std::cout << "\nTurno de: " << jugadorActual.getNombre()
-                  << " (" << jugadorActual.getSigla() << ")" << std::endl;
+        cout << "\nTurno de: " << jugadorActual.getNombre()
+                  << " (" << jugadorActual.getSigla() << ")" << endl;
 
         // --- INICIO DEL BUCLE DE VALIDACIÓN ---
 
         // Repetir esto hasta que el movimiento sea válido
         do {
-            // Input de coordenadas
-            std::cout << "Ingrese origen (fila columna): ";
-            std::cin >> r1 >> c1;
-            std::cout << "Ingrese destino (fila columna): ";
-            std::cin >> r2 >> c2;
+            string linea_entrada;
 
-            std::vector<int> coordenadas = {r1, c1, r2, c2};
-            std::string letra = jugadorActual.getSigla();
+            // --- INPUT ORIGEN ---
+            cout << "Ingrese origen (fila; columna): ";
+            getline(cin, linea_entrada);
+
+            // Reemplaza cualquier ';' o ',' por espacios
+            replace(linea_entrada.begin(), linea_entrada.end(), ';', ' ');
+            replace(linea_entrada.begin(), linea_entrada.end(), ',', ' ');
+
+            // Procesa los números
+            stringstream ss_origen(linea_entrada);
+            ss_origen >> r1 >> c1;
+            
+            // --- INPUT DESTINO ---
+            cout << "Ingrese destino (fila; columna): ";
+            getline(cin, linea_entrada);
+
+            // Misma limpieza
+            replace(linea_entrada.begin(), linea_entrada.end(), ';', ' ');
+            replace(linea_entrada.begin(), linea_entrada.end(), ',', ' ');
+
+            stringstream ss_destino(linea_entrada);
+            ss_destino >> r2 >> c2;
+
+            vector<int> coordenadas = {r1, c1, r2, c2};
+            string letra = jugadorActual.getSigla();
 
             // Llama al tablero.
             // Según el cambio, ahora nos devuelve true (éxito) o false (fallo).
             movimiento_exitoso = tablero.aplicar_movimiento(coordenadas, letra);
 
             if (!movimiento_exitoso) {
-                std::cout << "Intentalo de nuevo, por favor.\n";
+                cout << ">> Movimiento invalido (o formato incorrecto). Intentalo de nuevo.\n";
             }
 
         } while (!movimiento_exitoso);
@@ -134,7 +155,7 @@ void CJuego::jugar() {
         cambiar_turno();
     }
 
-    std::cout << "\n--- JUEGO TERMINADO ---\n";
+    cout << "\n--- JUEGO TERMINADO ---\n";
 }
 
 void CJuego::cambiar_turno() {
