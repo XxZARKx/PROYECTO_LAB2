@@ -66,6 +66,7 @@ void CJuego::mostrar_menu() {
         cout << "0. Salir\n";
         cout << "Seleccione la opcion: ";
         cin >> opcion;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         switch (opcion) {
             case 1:
@@ -115,7 +116,7 @@ void CJuego::jugar() {
             string linea_entrada;
 
             // --- INPUT ORIGEN ---
-            cout << "Ingrese origen (fila; columna): ";
+            cout << "Ingrese origen (fila;columna): ";
             getline(cin, linea_entrada);
 
             // Reemplaza cualquier ';' o ',' por espacios
@@ -127,7 +128,7 @@ void CJuego::jugar() {
             ss_origen >> r1 >> c1;
             
             // --- INPUT DESTINO ---
-            cout << "Ingrese destino (fila; columna): ";
+            cout << "Ingrese destino (fila;columna): ";
             getline(cin, linea_entrada);
 
             // Misma limpieza
