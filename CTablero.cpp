@@ -5,7 +5,7 @@
 #include "CTablero.h"
 
 
-ostream& operator<<(ostream& os, vector<vector<string>>& tabla) {
+ostream& operator<<(ostream& os, const vector<vector<string>>& tabla) {
     os<<"Tablero: ";
     for (int i=0;i<tabla.size();i++) {
         for (int j=0;j<tabla[i].size();j++) {
@@ -40,11 +40,12 @@ vector<vector<string>> CTablero::relleno_tablero() {
 
         }
     }
+    return tablero;
 }
-void CTablero::dibujar_tablero() {
+void CTablero::dibujar_tablero() const{
     cout<<tablero;
 }
-bool CTablero::aplicar_movimiento(const vector<int> &print,string letra) {
+bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra) {
     if (print.size() == 4) {
         vector<int> coordenadas;
         conversion_coordenadas(print,coordenadas);
@@ -67,14 +68,14 @@ bool CTablero::aplicar_movimiento(const vector<int> &print,string letra) {
             if (movimientos.coordenadas_validarMovimiento(tamano,tablero)) {
                 vector<int> posicion;
                 if ((coordenadas_pos_final[0]-coordenadas_pos_inicial[0])==0) {
-                    tablero[coordenadas_pos_inicial[0]][coordenadas_pos_inicial[1]+1] = " | ";
+                    tablero[coordenadas_pos_inicial[0]][coordenadas_pos_inicial[1]+1] = " -- ";
                     posicion.push_back(coordenadas_pos_inicial[0]);
                     posicion.push_back(coordenadas_pos_inicial[1]+1);
                     CCubo cubo(posicion,"columna");
                     cubo.verificar(tablero,letra);
                 }
                 if ((coordenadas_pos_final[1]-coordenadas_pos_inicial[1])==0) {
-                    tablero[coordenadas_pos_inicial[0]+1][coordenadas_pos_inicial[1]] = " ― ";
+                    tablero[coordenadas_pos_inicial[0]+1][coordenadas_pos_inicial[1]] = " | ";
                     posicion.push_back(coordenadas_pos_inicial[0]+1);
                     posicion.push_back(coordenadas_pos_inicial[1]);
                     CCubo cubo(posicion,"fila");

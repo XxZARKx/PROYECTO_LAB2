@@ -26,9 +26,9 @@ public:
     };
     virtual ~CTablero()=default;
     vector<vector<string>> relleno_tablero();
-    void dibujar_tablero();
-    bool aplicar_movimiento( const vector<int> &print,string letra);
-    void conversion_coordenadas(const vector<int> &print, vector<int> &coordenadas);
+    void dibujar_tablero() const;
+    bool aplicar_movimiento( const vector<int> &print,const string& letra);
+    static void conversion_coordenadas(const vector<int> &print, vector<int> &coordenadas);
     friend ostream& operator<<(iostream&, vector<vector<string>>& tabla);
 };
 
