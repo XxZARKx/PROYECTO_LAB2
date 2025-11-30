@@ -6,6 +6,7 @@
 #define CCUBO_CCUBO_H
 #include "CTablero.h"
 #include <string>
+#include <utility>
 #include <vector>
 #include <iostream>
 using namespace std;
