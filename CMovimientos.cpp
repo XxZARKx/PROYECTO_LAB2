@@ -5,7 +5,7 @@
 #include "CMovimientos.h"
 
 
-bool CMovimientos::coordenadas_validarMovimiento(int tablero_size,vector<vector<string>> &tablero) const {
+bool CMovimientos::coordenadas_validarMovimiento(int tablero_size,vector<vector<string>>const &tablero) const {
     if (coordenadas_pos_final.size() != 2)
         return false;
     if (coordenadas_pos_inicial.size() != 2)
