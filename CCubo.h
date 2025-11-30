@@ -4,6 +4,7 @@
 
 #ifndef CCUBO_CCUBO_H
 #define CCUBO_CCUBO_H
+//ReSharper disable CppUnusedIncludeDirective
 #include "CTablero.h"
 #include <string>
 #include <utility>
