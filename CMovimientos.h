@@ -21,8 +21,8 @@ private:
 public:
     CMovimientos()= default;
     explicit CMovimientos(const vector<int>& _print_pos_inicial, const vector<int> &_print_pos_final,const vector<int>& _coordenadas_pos_inicial, const vector<int> &_coordenadas_pos_final ):print_pos_inicial(_print_pos_inicial),print_pos_final(_print_pos_final),coordenadas_pos_inicial(_coordenadas_pos_inicial),coordenadas_pos_final(_coordenadas_pos_final){}
-    virtual ~CMovimientos(){}
-    [[nodiscard]] bool coordenadas_validarMovimiento(int tablero_size, vector<vector<string>> &tablero) const;
+    virtual ~CMovimientos()= default;
+    [[nodiscard]] bool coordenadas_validarMovimiento(int tablero_size,vector<vector<string>>const &tablero) const;
     [[nodiscard]] bool coordenadas_validarDistancia_manhattan() const;
     [[nodiscard]] bool print_validarMovimiento(int tablero_size) const;
     [[nodiscard]] bool print_validarDistancia_manhattan() const;
