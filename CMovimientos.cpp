@@ -50,7 +50,7 @@ bool CMovimientos::coordenadas_validarMovimiento(int tablero_size,vector<vector<
     return true;
 }
 bool CMovimientos::coordenadas_validarDistancia_manhattan() const {
-    int dist = sqrt(pow((coordenadas_pos_final[0] - coordenadas_pos_inicial[0]),2) +  pow((coordenadas_pos_final[1] - coordenadas_pos_inicial[1]),2));
+    double dist = sqrt(pow((coordenadas_pos_final[0] - coordenadas_pos_inicial[0]),2) +  pow((coordenadas_pos_final[1] - coordenadas_pos_inicial[1]),2));
     return dist == 2;
 }
 bool CMovimientos::print_validarMovimiento(int tablero_size) const {
