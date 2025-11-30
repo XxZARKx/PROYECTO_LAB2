@@ -78,18 +78,8 @@ void CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letr
             }
 
         }
-        if (estado.size()==6) {
-            estado_linea[pos[0]][pos[1]+1]=" " + letra + " ";
-        }
-
-        if (movimientos(pos[0]-1,pos[1]-1,estado_linea.size())) {
-            if (estado_linea[pos[0]-1][pos[1]-1]==" ― ") {
-                estado.push_back(pos[0]-1);
-                estado.push_back(pos[1]-1);
-            }
-        }
-        if (movimientos(pos[0]+1,pos[1]-1,estado_linea.size())) {
-            if (estado_linea[pos[0]+1][pos[1]-1]==" ― ") {
+        if (movimientos(pos[0]+1,pos[1]+1,estado_linea.size())) {
+            if (estado_linea[pos[0]+1][pos[1]+1]=="---") {
                 estado.push_back(pos[0]+1);
                 estado.push_back(pos[1]-1);
             }
