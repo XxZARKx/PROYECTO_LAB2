@@ -67,6 +67,8 @@ bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra) 
         if (movimientos.print_validarMovimiento(tamano)) {
             if (movimientos.coordenadas_validarMovimiento(tamano,tablero)) {
                 vector<int> posicion;
+                int a=0;
+                int b=0;
                 if ((coordenadas_pos_final[0]-coordenadas_pos_inicial[0])==0) {
                     if (coordenadas_pos_final[1]-coordenadas_pos_inicial[1]==2) {
                         tablero[coordenadas_pos_inicial[0]][coordenadas_pos_inicial[1]+1] = "---";
