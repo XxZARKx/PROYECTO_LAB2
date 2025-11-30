@@ -4,7 +4,7 @@
 
 #include "CCubo.h"
 
-bool CCubo::movimientos(int n1,int n2, int tamano) {
+bool CCubo::movimientos(int n1,int n2, size_t tamano) {
     if (n1 > 0 && n1 < tamano && n2 > 0 && n2 < tamano) {
         return true;
     }
