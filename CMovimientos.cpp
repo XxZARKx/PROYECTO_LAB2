@@ -36,8 +36,15 @@ bool CMovimientos::coordenadas_validarMovimiento(int tablero_size,vector<vector<
         }
     }
     if ((final_columna-inicial_columna)==0) {
-        if (tablero[inicial_fila+1][inicial_columna] == " ― " ) {
-            return false;
+        if (final_fila-inicial_fila==2) {
+            if (tablero[inicial_fila+1][inicial_columna] == "  |" ) {
+                return false;
+            }
+        }
+        else {
+            if (tablero[inicial_fila-1][inicial_columna] == "  |" ) {
+                return false;
+            }
         }
     }
     return true;
