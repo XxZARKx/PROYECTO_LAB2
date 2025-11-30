@@ -74,7 +74,7 @@ void CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letr
         if (movimientos(pos[0],pos[1]+2,estado_linea.size())) {
             if (estado_linea[pos[0]][pos[1]+2]==" | ") {
                 estado.push_back(pos[0]);
-            estado.push_back(pos[1]+2);
+                estado.push_back(pos[1]+2);
             }
 
         }
