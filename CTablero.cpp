@@ -114,7 +114,7 @@ bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra) 
 
 }
 void CTablero::conversion_coordenadas(const vector<int> &print, vector<int> &coordenadas) {
-    for (int i=0;i<print.size();i++) {
-        coordenadas.push_back(print[i]*2 -1);
+    for (int i : print) {
+        coordenadas.push_back(i*2 -1);
     }
 }
