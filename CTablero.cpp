@@ -68,9 +68,18 @@ bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra) 
             if (movimientos.coordenadas_validarMovimiento(tamano,tablero)) {
                 vector<int> posicion;
                 if ((coordenadas_pos_final[0]-coordenadas_pos_inicial[0])==0) {
-                    tablero[coordenadas_pos_inicial[0]][coordenadas_pos_inicial[1]+1] = " -- ";
-                    posicion.push_back(coordenadas_pos_inicial[0]);
-                    posicion.push_back(coordenadas_pos_inicial[1]+1);
+                    if (coordenadas_pos_final[1]-coordenadas_pos_inicial[1]==2) {
+                        tablero[coordenadas_pos_inicial[0]][coordenadas_pos_inicial[1]+1] = "---";
+                        a=coordenadas_pos_inicial[0];
+                        b=coordenadas_pos_inicial[1]+1;
+                    }
+                    else {
+                        tablero[coordenadas_pos_inicial[0]][coordenadas_pos_inicial[1]-1] = "---";
+                        a=coordenadas_pos_inicial[0];
+                        b=coordenadas_pos_inicial[1]-1;
+                    }
+                    posicion.push_back(a);
+                    posicion.push_back(b);
                     CCubo cubo(posicion,"columna");
                     cubo.verificar(tablero,letra);
                 }
