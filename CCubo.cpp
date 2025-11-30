@@ -11,7 +11,7 @@ bool CCubo::movimientos(int n1,int n2, size_t tamano) {
     return false;
 }
 
-void CCubo :: verificar( vector<vector<string>> &estado_linea,string letra){
+void CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letra)const {
     vector<int> estado;
     if (lado=="columna") {
         if (movimientos(pos[0]-1,pos[1]+1,estado_linea.size())) {
