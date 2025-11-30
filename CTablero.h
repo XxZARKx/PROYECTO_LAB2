@@ -55,7 +55,6 @@ public:
         }
     };
     virtual ~CTablero()=default;
-    vector<vector<string>> relleno_tablero();
     void dibujar_tablero() const;
     bool aplicar_movimiento( const vector<int> &print,const string& letra);
     static void conversion_coordenadas(const vector<int> &print, vector<int> &coordenadas);
