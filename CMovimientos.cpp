@@ -24,8 +24,15 @@ bool CMovimientos::coordenadas_validarMovimiento(int tablero_size,vector<vector<
     if (!coordenadas_validarDistancia_manhattan())
         return false;
     if ((final_fila-inicial_fila)==0) {
-        if (tablero[inicial_fila][inicial_columna+1] == " | " ) {
-            return false;
+        if (final_columna-inicial_columna==2) {
+            if (tablero[inicial_fila][inicial_columna+1] == "---" ) {
+                return false;
+            }
+        }
+        else {
+            if (tablero[inicial_fila][inicial_columna-1] == "---" ) {
+                return false;
+            }
         }
     }
     if ((final_columna-inicial_columna)==0) {
