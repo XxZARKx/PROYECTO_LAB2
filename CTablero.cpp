@@ -6,10 +6,10 @@
 
 
 ostream& operator<<(ostream& os, const vector<vector<string>>& tabla) {
-    os<<"Tablero: ";
-    for (int i=0;i<tabla.size();i++) {
-        for (int j=0;j<tabla[i].size();j++) {
-            os<<tabla[i][j];
+    os<<"Tablero: \n";
+    for (const auto & i : tabla) {
+        for (const auto & j : i) {
+            os<<j;
         }
         os<<endl;
     }
