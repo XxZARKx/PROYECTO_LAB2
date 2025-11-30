@@ -84,9 +84,18 @@ bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra) 
                     cubo.verificar(tablero,letra);
                 }
                 if ((coordenadas_pos_final[1]-coordenadas_pos_inicial[1])==0) {
-                    tablero[coordenadas_pos_inicial[0]+1][coordenadas_pos_inicial[1]] = " | ";
-                    posicion.push_back(coordenadas_pos_inicial[0]+1);
-                    posicion.push_back(coordenadas_pos_inicial[1]);
+                    if (coordenadas_pos_final[0]-coordenadas_pos_inicial[0]==2) {
+                        tablero[coordenadas_pos_inicial[0]+1][coordenadas_pos_inicial[1]] = "  |";
+                        a=coordenadas_pos_inicial[0]+1;
+                        b=coordenadas_pos_inicial[1];
+                    }
+                    else {
+                        tablero[coordenadas_pos_inicial[0]-1][coordenadas_pos_inicial[1]] = "  |";
+                        a=coordenadas_pos_inicial[0]-1;
+                        b=coordenadas_pos_inicial[1];
+                    }
+                    posicion.push_back(a);
+                    posicion.push_back(b);
                     CCubo cubo(posicion,"fila");
                     cubo.verificar(tablero,letra);
                 }
