@@ -4,6 +4,7 @@
 
 #ifndef PROYECTO_CTABLERO_H
 #define PROYECTO_CTABLERO_H
+//ReSharper disable CppUnusedIncludeDirective
 #include <iostream>
 #include <vector>
 #include <string>
