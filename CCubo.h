@@ -15,9 +15,9 @@ class CCubo {
         vector<int> pos;
         string lado;
     public:
-        CCubo(){};
-        CCubo(vector<int> _pos, string _lado):pos(_pos),lado(_lado){};
-        virtual ~CCubo(){};
+        CCubo()= default;
+        CCubo(vector<int> _pos, string _lado):pos(std::move(_pos)),lado(std::move(_lado)){};
+        virtual ~CCubo()= default;
 
     //Metodo de verificacion
         void verificar(vector<vector<string>> &estado_linea, string letra);
