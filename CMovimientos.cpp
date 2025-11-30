@@ -74,7 +74,7 @@ bool CMovimientos::print_validarMovimiento(int tablero_size) const {
     return true;
 }
 bool CMovimientos::print_validarDistancia_manhattan() const {
-    int dist = sqrt(pow((print_pos_final[0] - print_pos_inicial[0]),2) +  pow((print_pos_final[1] - print_pos_inicial[1]),2));
+    double dist = sqrt(pow((print_pos_final[0] - print_pos_inicial[0]),2) +  pow((print_pos_final[1] - print_pos_inicial[1]),2));
     return dist == 1;
 }
 
