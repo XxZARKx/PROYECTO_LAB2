@@ -24,6 +24,35 @@ public:
         for (int i = 0; i < tamano; i++) {
             tablero[i].resize(tamano," ");
         }
+        int contador=1;
+        for (int i=0;i<tamano;i++) {
+            if (i%2==0) {
+                tablero[i][0] = "  ";
+                tablero[0][i] = "  ";
+            }
+            else {
+                if (contador==10) {
+                    tablero[i][0] = " "+to_string(contador);
+                }
+                else {
+                    tablero[i][0] = " "+to_string(contador)+ " ";
+
+                }
+                tablero[0][i] = "  " + to_string(contador) + " ";
+                contador++;
+            }
+        }
+        for (int i=1;i<tamano;i++) {
+            for (int j=1;j<tamano;j++) {
+                if (i%2!=0 and j%2!=0) {
+                    tablero[i][j] = " + ";
+                }
+                else {
+                    tablero[i][j] = "   ";
+                }
+
+            }
+        }
     };
     virtual ~CTablero()=default;
     vector<vector<string>> relleno_tablero();
