@@ -11,8 +11,10 @@ bool CCubo::movimientos(int n1,int n2, size_t tamano) {
     return false;
 }
 
-void CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letra)const {
+int CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letra)const {
+    int puntos_obtenidos = 0;
     vector<int> estado;
+
     if (lado=="columna") {
         if (movimientos(pos[0]-2,pos[1],estado_linea.size())) {
             if (estado_linea[pos[0]-2][pos[1]]=="---") {
@@ -36,6 +38,7 @@ void CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letr
         }
         if (estado.size()==6) {
             estado_linea[pos[0]-1][pos[1]]="  " + letra;
+            puntos_obtenidos++;
         }
         estado.clear();
 
@@ -61,6 +64,7 @@ void CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letr
         }
         if (estado.size()==6) {
             estado_linea[pos[0]+1][pos[1]]="  " + letra;
+            puntos_obtenidos++;
         }
 
     }
@@ -87,6 +91,7 @@ void CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letr
         }
         if (estado.size()==6) {
             estado_linea[pos[0]][pos[1]+1]="  " + letra;
+            puntos_obtenidos++;
         }
         estado.clear();
 
@@ -112,8 +117,10 @@ void CCubo :: verificar( vector<vector<string>> &estado_linea,const string& letr
         }
         if (estado.size()==6) {
             estado_linea[pos[0]][pos[1]-1]="  " + letra;
+            puntos_obtenidos++;
         }
 
     }
     estado.clear();
+    return puntos_obtenidos;
 }

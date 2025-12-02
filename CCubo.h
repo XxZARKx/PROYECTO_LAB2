@@ -22,7 +22,7 @@ class CCubo {
         virtual ~CCubo()= default;
 
     //Metodo de verificacion
-        void verificar( vector<vector<string>> &estado_linea,const string& letra) const;
+        int verificar( vector<vector<string>> &estado_linea,const string& letra) const;
         static bool movimientos(int n1,int n2, size_t tamano);
 
 };
