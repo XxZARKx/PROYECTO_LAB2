@@ -63,10 +63,11 @@ bool CMovimientos::print_validarMovimiento(int tablero_size) const {
     int final_fila = print_pos_final[0];
     int final_columna = print_pos_final[1];
 
-    if (!(inicial_fila > 0 && inicial_fila < 7 && inicial_columna > 0 && inicial_columna < 7))
+    if (!(inicial_fila > 0 && inicial_fila <= tablero_size && inicial_columna > 0 && inicial_columna <= tablero_size))
         return false;
-    if (!(final_fila > 0 && final_fila < 7 && final_columna > 0 && final_columna < 7))
+    if (!(final_fila > 0 && final_fila <= tablero_size && final_columna > 0 && final_columna <= tablero_size))
         return false;
+
     if ((inicial_fila!=final_fila and inicial_columna!=final_columna) or (inicial_fila==final_fila and inicial_columna==final_columna))
         return false;
     if (!print_validarDistancia_manhattan())
