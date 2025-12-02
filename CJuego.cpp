@@ -107,9 +107,11 @@ void CJuego::jugar() {
 
         CJugador &jugadorActual = jugadores[turno_actual];
         cout << "\nTurno de: " << jugadorActual.getNombre()
-                  << " (" << jugadorActual.getSigla() << ")" << endl;
+             << " (" << jugadorActual.getSigla() << ")"
+             << " | Puntos: " << jugadorActual.getPuntaje() << endl;
 
         // --- INICIO DEL BUCLE DE VALIDACIÓN ---
+        int puntos_en_este_turno = 0;
 
         // Repetir esto hasta que el movimiento sea válido
         do {
@@ -143,7 +145,7 @@ void CJuego::jugar() {
 
             // Llama al tablero.
             // Según el cambio, ahora nos devuelve true (éxito) o false (fallo).
-            movimiento_exitoso = tablero.aplicar_movimiento(coordenadas, letra);
+            movimiento_exitoso = tablero.aplicar_movimiento(coordenadas, letra, puntos_en_este_turno);
 
             if (!movimiento_exitoso) {
                 cout << ">> Movimiento invalido (o formato incorrecto). Intentalo de nuevo.\n";
@@ -152,8 +154,16 @@ void CJuego::jugar() {
         } while (!movimiento_exitoso);
         // --- FIN DEL BUCLE DE VALIDACIÓN ---
 
-        // Solo cambiamos de turno si salimos del bucle (o sea, si fue exitoso)
-        cambiar_turno();
+        if (puntos_en_este_turno > 0) {
+            // 1. Sumar puntaje al jugador actual
+            jugadorActual.sumarPuntaje(puntos_en_este_turno);
+
+            cout << "\n!! " << jugadorActual.getNombre() << " cerro "
+                 << puntos_en_este_turno << " cuadrado(s) y repite turno !!\n";
+        } else {
+            // Si no hizo puntos, le toca al siguiente
+            cambiar_turno();
+        }
     }
 
     cout << "\n--- JUEGO TERMINADO ---\n";
