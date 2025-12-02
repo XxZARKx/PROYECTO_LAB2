@@ -56,7 +56,7 @@ public:
     };
     virtual ~CTablero()=default;
     void dibujar_tablero() const;
-    bool aplicar_movimiento( const vector<int> &print,const string& letra);
+    bool aplicar_movimiento( const vector<int> &print,const string& letra, int &puntos_ganados);
     static void conversion_coordenadas(const vector<int> &print, vector<int> &coordenadas);
     friend ostream& operator<<(iostream&, vector<vector<string>>& tabla);
 };

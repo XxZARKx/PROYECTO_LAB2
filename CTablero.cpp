@@ -18,7 +18,8 @@ ostream& operator<<(ostream& os, const vector<vector<string>>& tabla) {
 void CTablero::dibujar_tablero() const{
     cout<<tablero;
 }
-bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra) {
+bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra, int &puntos_ganados) {
+    puntos_ganados = 0;
     if (print.size() == 4) {
         vector<int> coordenadas;
         conversion_coordenadas(print,coordenadas);
@@ -56,7 +57,7 @@ bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra) 
                     posicion.push_back(a);
                     posicion.push_back(b);
                     CCubo cubo(posicion,"columna");
-                    cubo.verificar(tablero,letra);
+                    puntos_ganados = cubo.verificar(tablero, letra);
                 }
                 if ((coordenadas_pos_final[1]-coordenadas_pos_inicial[1])==0) {
                     if (coordenadas_pos_final[0]-coordenadas_pos_inicial[0]==2) {
@@ -72,7 +73,7 @@ bool CTablero::aplicar_movimiento(const vector<int> &print,const string& letra) 
                     posicion.push_back(a);
                     posicion.push_back(b);
                     CCubo cubo(posicion,"fila");
-                    cubo.verificar(tablero,letra);
+                    puntos_ganados = cubo.verificar(tablero, letra);
                 }
                 posicion.clear();
                 return true;
